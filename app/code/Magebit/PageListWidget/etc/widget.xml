@@ -1,0 +1,27 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Magebit\PageListWidget\Block\Widget\PageList" id="orange_test_widget">
+        <label>CMS Page List</label>
+        <description>This is a test widget!!!</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true">
+                <label>Label</label>
+            </parameter>
+            <parameter name="display_type" xsi:type="select" required="true" visible="true">
+                <label translate="true">Display Type</label>
+                <options>
+                    <option name="all_pages" value="all pages" selected="true">
+                        <label translate="true">All pages</label>
+                    </option>
+                    <option name="specific_page" value="specific page">
+                        <label translate="true">Specific page</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_attributes" xsi:type="multiselect" required="true" visible="true" source_model="Magento\Cms\Model\Config\Source\Page">
+ >
+
+                <label translate="true">Product attributes to show</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
