@@ -1,7 +1,13 @@
 <?php
 // /** \ExampleCorp\Learning\Block\Widget\Test $block */
 
+//variable declaration
+$selection = $block->getData('list_pages');
 
 ?>
 <h3><?= $block->escapeHtml($block->getData('title')) ?></h3>
-<h3><?= $block->escapeHtml(__('Page Selection:')) ?> <?= $block->escapeHtml($block->getData('display_type')) ?></h3>
+<h3>
+    <!-- <?= $block->escapeHtml(__('Page Selection:')) ?> -->
+     <?= $block->escapeHtml($block->getData('list_pages')) ?></h3>
+
+

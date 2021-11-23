@@ -17,14 +17,10 @@
                     </option>
                 </options>
             </parameter>
-            <parameter name="show_attributes" xsi:type="multiselect" required="true" visible="true" source_model="Magento\Cms\Model\Config\Source\Page">
- >
+            <parameter name="list_pages" xsi:type="multiselect" required="true" visible="true" source_model="Magento\Cms\Model\Config\Source\Page">
                 <depends>
                     <parameter name="display_type" value="specific page" />
                 </depends>
-
-
-
                 <label translate="true">Product attributes to show</label>
             </parameter>
         </parameters>
