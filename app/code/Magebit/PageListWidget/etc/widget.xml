@@ -1,10 +1,10 @@
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-    <widget class="Magebit\PageListWidget\Block\Widget\PageList" id="orange_test_widget">
+    <widget class="Magebit\PageListWidget\Block\Widget\PageList" id="page_list_widget">
         <label>CMS Page List</label>
-        <description>This is a test widget!!!</description>
+        <description>Displays links to all/selected pages </description>
         <parameters>
             <parameter name="title" xsi:type="text" required="false" visible="true">
-                <label>Label</label>
+                <label>Title</label>
             </parameter>
             <parameter name="display_type" xsi:type="select" required="true" visible="true">
                 <label translate="true">Display Type</label>
@@ -17,11 +17,12 @@
                     </option>
                 </options>
             </parameter>
-            <parameter name="list_pages" xsi:type="multiselect" required="true" visible="true" source_model="Magento\Cms\Model\Config\Source\Page">
+            <parameter name="page_list" xsi:type="multiselect" required="true" visible="true" source_model="Magento\Cms\Model\Config\Source\Page">
                 <depends>
                     <parameter name="display_type" value="specific page" />
                 </depends>
-                <label translate="true">Product attributes to show</label>
+                <!-- <label translate="true">Product attributes to show</label> -->
+
             </parameter>
         </parameters>
     </widget>

@@ -5,6 +5,8 @@
 
 'use strict';
 
+// const path = require("path/posix");
+
 /**
  * Define Themes
  *
@@ -18,7 +20,19 @@
  * dsl: dynamic stylesheet language (less|sass)
  *
  */
+
 module.exports = {
+    learning: {
+        area: 'frontend',
+        name: 'Magebit/learning',
+        locale: 'en_US',
+        files: [
+            'css/styles-m',
+            'css/styles-l'
+            
+        ],
+        dsl: 'less'
+    },
     blank: {
         area: 'frontend',
         name: 'Magento/blank',

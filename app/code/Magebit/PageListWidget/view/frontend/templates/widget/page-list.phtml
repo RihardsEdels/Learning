@@ -1,13 +1,22 @@
 <?php
-// /** \ExampleCorp\Learning\Block\Widget\Test $block */
-
-//variable declaration
-$selection = $block->getData('list_pages');
+// /** \ExampleCorp\Learning\Block\Widget\PageList $block */
+$pages = $block->getPages();
+// var_dump($block->getCollection());
 
 ?>
-<h3><?= $block->escapeHtml($block->getData('title')) ?></h3>
+
 <h3>
-    <!-- <?= $block->escapeHtml(__('Page Selection:')) ?> -->
-     <?= $block->escapeHtml($block->getData('list_pages')) ?></h3>
+    <?= $block->getTitle() ?>
+</h3>
 
+<?php foreach ($pages as $page) { ?>
+    <li>
+        <a href="<?= $block->getUrl($page['value']) ?>">
+            <?= $page['label'] ?>
+        </a>
+    </li>
+<?php } ?>
 
+<h3>
+    <?= $block->getDisplayType() ?>
+</h3>
