@@ -7,7 +7,6 @@ use Magento\Widget\Block\BlockInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Cms\Api\PageRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\Exception\LocalizedException;
 
 class PageList extends Template implements BlockInterface
 {
@@ -87,24 +86,10 @@ class PageList extends Template implements BlockInterface
     }
 
     //returns page collection
-    public function getCollection()
-    {
-        $searchCriteria = $this->getSearchCriteria();
-        $pageCollection = $this->_pageRepositoryInterface->getList($searchCriteria)->getItems();
-        return $pageCollection;
-    }
-
-
-    //returns array with page title and identifier
     public function getPages()
     {
-        $pages = [];
-        foreach ($this->getCollection() as $page) {
-            $pages[] = [
-                'value' => $page->getIdentifier(),
-                'label' => $page->getTitle()
-            ];
-        }
-        return $pages;
+        $searchCriteria = $this->getSearchCriteria();
+
+        return $this->_pageRepositoryInterface->getList($searchCriteria)->getItems();
     }
 }

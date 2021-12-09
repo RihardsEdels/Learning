@@ -1,5 +1,4 @@
 <?php
-// /** \ExampleCorp\Learning\Block\Widget\PageList $block */
 $pages = $block->getPages();
 // var_dump($block->getCollection());
 
@@ -11,8 +10,8 @@ $pages = $block->getPages();
 
 <?php foreach ($pages as $page) { ?>
     <li>
-        <a href="<?= $block->getUrl($page['value']) ?>">
-            <?= $page['label'] ?>
+        <a href="<?= $block->getUrl($page->getIdentifier()) ?>">
+            <?= $page->getTitle() ?>
         </a>
     </li>
 <?php } ?>

@@ -11,9 +11,13 @@
             <block class="Magento\Catalog\Block\Product\View\Type\Simple" name="product.info.simple" as="product_type_data" template="Magento_Catalog::product/view/type/default.phtml"/>
             <container name="product.info.simple.extra" after="product.info.simple" as="product_type_data_extra" label="Product Extra Info"/>
         </referenceContainer>
-
         <move element="product.info.upsell" destination="product.info.main" />
         <move element="product.info.overview" destination="product.info.main" after="product.info.price"/>
         <referenceContainer name="product.info.social" remove="true"/>
+        <move element="product.attributes" destination="product.info.main" after="product.info.price"/>
+        <referenceBlock name="product.info.details" remove="true"/>
+
+
+
     </body>
 </page>
