@@ -16,20 +16,17 @@ class PageList extends Template implements BlockInterface
     const PAGE_LIST = 'page_list';
 
     //display_type
-    const SPECIFIC_PAGE = 'specific_page';
-    const ALL_PAGES = 'all_pages';
+    const SPECIFIC_PAGE = 'specific page';
+    const ALL_PAGES = 'all pages';
 
     //set template
     protected $_template = "widget/page-list.phtml";
 
 
     //properties
-    public $title;
-    public $selection;
-    public $display_type;
+
     private $_pageRepositoryInterface;
     private $_searchCriteriaBuilder;
-    public $selectedPages;
 
 
     public function __construct(
@@ -48,25 +45,21 @@ class PageList extends Template implements BlockInterface
     //gets the title from the widget config
     public function getTitle()
     {
-        $this->title = $this->getData('title');
-        return $this->title;
+        return $this->getData(self::TITLE);
     }
 
     //getselection (multiselect) from  widget config
     public function  getPageSelection()
     {
-        $this->selection = $this->getData('list_pages');
+        $selection = $this->getData(self::PAGE_LIST);
         //convert to array
-        $this->selectedPages = explode(",", $this->selection);
-        return $this->selectedPages;
-        //returns array(2) { [0]=> string(4) "home" [1]=> string(38) "privacy-policy-cookie-restriction-mode" }
-
+        $selectedPages = explode(",", $selection);
+        return $selectedPages;
     }
     //display type (all pages || specific page) from widget config
     public function getDisplayType()
     {
-        $this->display_type = $this->getData('display_type');
-        return $this->display_type;
+        return $this->getData(self::DISPLAY_TYPE);
     }
 
     //builds search criteria with or without filter
@@ -76,9 +69,7 @@ class PageList extends Template implements BlockInterface
         $value = $this->getPageSelection();
         $condition = 'in';
 
-
-
-        if ($this->getDisplayType() == 'specific page') {
+        if ($this->getDisplayType() === self::SPECIFIC_PAGE) {
             return $this->_searchCriteriaBuilder->addFilter($field, $value, $condition)->create();
         } else {
             return $this->_searchCriteriaBuilder->create();

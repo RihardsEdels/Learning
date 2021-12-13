@@ -7,14 +7,23 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <attribute name="class" value="simple-product-page"/>
+
         <referenceContainer name="product.info.type">
             <block class="Magento\Catalog\Block\Product\View\Type\Simple" name="product.info.simple" as="product_type_data" template="Magento_Catalog::product/view/type/default.phtml"/>
             <container name="product.info.simple.extra" after="product.info.simple" as="product_type_data_extra" label="Product Extra Info"/>
         </referenceContainer>
+
+        <referenceBlock name="product.attributes" template="Magento_Catalog::product/view/attributes-simple.phtml">
+            <arguments>
+                <argument name="view_model" xsi:type="object">\Magebit\Attributes\ViewModel\Attributes</argument>
+            </arguments>
+        </referenceBlock>
+
         <move element="product.info.upsell" destination="product.info.main" />
         <move element="product.info.overview" destination="product.info.main" after="product.info.price"/>
-        <referenceContainer name="product.info.social" remove="true"/>
         <move element="product.attributes" destination="product.info.main" after="product.info.price"/>
+        <referenceContainer name="product.info.social" remove="true"/>
         <referenceBlock name="product.info.details" remove="true"/>
 
 

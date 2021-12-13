@@ -1,6 +1,5 @@
 <?php
 $pages = $block->getPages();
-// var_dump($block->getCollection());
 
 ?>
 
@@ -8,14 +7,13 @@ $pages = $block->getPages();
     <?= $block->getTitle() ?>
 </h3>
 
-<?php foreach ($pages as $page) { ?>
-    <li>
-        <a href="<?= $block->getUrl($page->getIdentifier()) ?>">
-            <?= $page->getTitle() ?>
-        </a>
-    </li>
-<?php } ?>
-
-<h3>
-    <?= $block->getDisplayType() ?>
-</h3>
+<ul class="page-list">
+    <?php foreach ($pages as $page) : ?>
+        <li class="page-list-item">
+            <!-- Following PSR-2 guide make sure line doesn't exceed 120 chars, don't be afraid to add line breaks -->
+            <a class="page-link" href="<?= $block->getUrl($page->getIdentifier()) ?>">
+                <?= $page->getTitle(); ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>

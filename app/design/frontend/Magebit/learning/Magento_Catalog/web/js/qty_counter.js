@@ -5,6 +5,9 @@ define([
     'use strict';
  
     return Component.extend({
+        defaults:{
+            template: 'Magento_Catalog/input-counter'
+        },
         initialize: function () {
             //initialize parent Component
             this._super();

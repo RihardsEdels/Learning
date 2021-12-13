@@ -1,0 +1,16 @@
+<?php
+$helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$attributeViewModel = $block->getData('view_model');
+?>
+<?php if ($additional = $block->getAdditionalData()) : ?>
+    <div class="product-attribute-list">
+        <ul>
+            <?php foreach ($attributeViewModel->getAttributes($additional) as $attribute) : ?>
+                <li><span class="attribute-label"><?= $block->escapeHtml($attribute['label']) ?>
+                    </span><span class="attribute-value"><?= /* @noEscape */
+                                                            $helper->productAttribute($block->getProduct(), $attribute['value'], $attribute['code']) ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

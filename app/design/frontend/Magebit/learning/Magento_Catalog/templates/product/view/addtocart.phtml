@@ -14,10 +14,10 @@
         <div class="fieldset">
             <?php if ($block->shouldRenderQuantity()) : ?>
                 <div class="counter-flex-container">
-                    <div class="field qty">
-                        <!-- <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label> -->
-                        <script type="text/x-magento-init">
-                            {
+                    <!-- <div class="field qty"> -->
+                    <!-- <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label> -->
+                    <script type="text/x-magento-init">
+                        {
                         "*": {
                         "Magento_Ui/js/core/app": {
                             "components": {
@@ -29,27 +29,27 @@
                                          }
                                 }
                              }
-                    </script>
+                        </script>
 
-                        <div class="control" data-bind="scope: 'qty_change'">
-                            <button data-bind="click: decreaseQty">-</button>
-                            <input data-bind="value: qty()" type="number" name="qty" id="qty" maxlength="12" title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty" data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>" />
-                            <button data-bind="click: increaseQty">+</button>
-                        </div>
+
+
+                    <div id="custom-qty" class="control" data-bind="scope: 'qty_change'">
+                        <!-- ko template: getTemplate() -->
+                        <!-- /ko -->
                     </div>
 
-                    <!-- stock availability -->
-                    <?php if ($_product->isAvailable()) : ?>
-                        <div class="stock-available" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
-                            <span><?= $block->escapeHtml(__('IN STOCK')) ?></span>
-                        </div>
-                    <?php else : ?>
-                        <div class="stock-unavailable" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
-                            <span><?= $block->escapeHtml(__('OUT OF STOCK')) ?></span>
-                        </div>
-                    <?php endif; ?>
-                    <p><?= $_product->getExtensionAttributes()->getStockItem()->getQty() ?> Items available</p>
-                    <!-- stock availability -->
+
+                    <div class="stock-availability">
+                        <!-- stock availability -->
+                        <img class="checkmark-icon" src='<?php echo $this->getViewFileUrl('Magento_Catalog::images/checkmark.svg'); ?>' alt="checkmark-icon" />
+                        <?php if ($_product->isAvailable()) : ?>
+                            <p class="stock-available"><?= $block->escapeHtml(__('IN STOCK')) ?></p>
+                        <?php else : ?>
+                            <p class="stock-unavailable"><?= $block->escapeHtml(__('OUT OF STOCK')) ?></p>
+                        <?php endif; ?>
+                        <p><?= $_product->getExtensionAttributes()->getStockItem()->getQty() ?> Items available</p>
+                        <!-- stock availability -->
+                    </div>
                 </div>
                 <br>
             <?php endif; ?>
